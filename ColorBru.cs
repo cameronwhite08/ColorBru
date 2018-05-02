@@ -640,42 +640,42 @@ namespace WEB
             return codes;
         }
 
-        public static List<Color[]> GetColors(Code code, bool reversed = false)
-        {
-            var colors = new List<Color[]>();
-            foreach (var range in GetHtmlCodes(code, reversed).AsEnumerable())
-            {
-                var c = new Color[range.Length];
-                for (var i = 0; i < range.Length; i++)
-                    c[i] = ColorTranslator.FromHtml(range[i]);
-                colors.Add(c);
-            }
-            return colors;
-        }
+        //public static List<Color[]> GetColors(Code code, bool reversed = false)
+        //{
+        //    var colors = new List<Color[]>();
+        //    foreach (var range in GetHtmlCodes(code, reversed).AsEnumerable())
+        //    {
+        //        var c = new Color[range.Length];
+        //        for (var i = 0; i < range.Length; i++)
+        //            c[i] = ColorTranslator.FromHtml(range[i]);
+        //        colors.Add(c);
+        //    }
+        //    return colors;
+        //}
 
-        public static Color[] GetColors(Code code, byte numberOfColors, bool reversed = false)
-        {
-            var colors = new List<Color>();
-            foreach (var color in GetHtmlCodes(code, numberOfColors))
-                colors.Add(ColorTranslator.FromHtml(color));
-            return colors.ToArray();
-        }
+        //public static Color[] GetColors(Code code, byte numberOfColors, bool reversed = false)
+        //{
+        //    var colors = new List<Color>();
+        //    foreach (var color in GetHtmlCodes(code, numberOfColors))
+        //        colors.Add(ColorTranslator.FromHtml(color));
+        //    return colors.ToArray();
+        //}
 
-        public static List<Color[]> GetColors(string colorConfig, Code defaultColorCode = Code.Set3, bool reversed = false)
-        {
-            var code = defaultColorCode;
-            if (colorConfig.Contains(":"))
-            {
-                var configs = colorConfig.Split(':');
-                var codeConfig = configs[0];
-                if (Enum.IsDefined(typeof(Code), codeConfig))
-                {
-                    code = (Code)Enum.Parse(typeof(Code), codeConfig, true);
-                    if (configs.Length == 3 && configs[2] == "1") reversed = true;
-                }
-            }
-            return GetColors(code, reversed);
-        }
+        //public static List<Color[]> GetColors(string colorConfig, Code defaultColorCode = Code.Set3, bool reversed = false)
+        //{
+        //    var code = defaultColorCode;
+        //    if (colorConfig.Contains(":"))
+        //    {
+        //        var configs = colorConfig.Split(':');
+        //        var codeConfig = configs[0];
+        //        if (Enum.IsDefined(typeof(Code), codeConfig))
+        //        {
+        //            code = (Code)Enum.Parse(typeof(Code), codeConfig, true);
+        //            if (configs.Length == 3 && configs[2] == "1") reversed = true;
+        //        }
+        //    }
+        //    return GetColors(code, reversed);
+        //}
 
         public class Palette
         {
